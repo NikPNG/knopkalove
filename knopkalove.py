@@ -37,14 +37,25 @@ btn.place(x=250, y=50)
 # Создаем текстовую надпись (Label) для показа очков
 # Она зеленая (dark green) и находится в левом верхнем углу
 lbl = tk.Label(
-    master=app, 
+    master=app,
     text="очки: 0, скорость: 0",         # Начальный текст
     font=('Helvetica', 16), # Шрифт обычный, размер 16
     bg='dark green'         # Фон зеленый
 )
 lbl.place(x=10, y=10)       # В самом углу окна (отступ 10 пикселей)
 
+score = 0
+ypos = 0
+speed = 3
+taimer = None
+def f_fall():
+    global ypos, speed, score, taimer
+    ypos = ypos + speed
+    btn.place(y = ypos)
+    taimer = app.after(50,f_fall) #дф это не строка, дурында!!!!!!!!!!!!
+
+#теперь вызови эту функцию дурень!
+f_fall() #дурень исправился!!!!!!!!!!!!!
 # Запускаем приложение (бесконечный цикл, ждет нажатий мыши)
 # mainloop держит окно открытым, пока не закроем программу
 app.mainloop()
-
